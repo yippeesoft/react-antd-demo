@@ -28,3 +28,8 @@ npm4 run build
 npm4 run dev
    
 http://localhost:8080/
+
+##热生效
+  本来JS是解释的，然后jsx弄成了编译，然后再弄个东西热生效··
+  参考：https://github.com/gaearon/react-hot-boilerplate
+  
