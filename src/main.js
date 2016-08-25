@@ -30,6 +30,8 @@ import myAnimate from './components/animate.js'
 import myCalendar from './components/calendar.js'
 import myCard from './components/fetch.js'
 
+import myStorage from './components/storage.js'
+
 const ACTIVE = { color: 'red' }
 
 // 配置导航
@@ -62,23 +64,30 @@ class Sider extends React.Component {
         return (
             <div>
                 <div id="leftMenu"> 
-                    <img src='src/assets/images/logo.png' width="50" id="logo"/>
+                    <h2 ><img src='src/assets/images/logo.png' width="50" id="logo"/> </h2>
                     <Menu theme="dark"
                         onClick={this.handleClick}
                         style={{ width: 185 }}
-                        defaultOpenKeys={['sub1', 'sub2']}
+                        defaultOpenKeys={['sub1', 'sub2','sub3']}
                         defaultSelectedKeys={[this.state.current]}
                         mode="inline"
                     >
-                        <SubMenu key="sub1" title={<span><Icon type="mail" /><span>导航一</span></span>}>
-                            <Menu.Item key="1"><Link to="/myTable">表格</Link></Menu.Item>
-                            <Menu.Item key="2"><Link to="/myForm">表单</Link></Menu.Item>
-                            <Menu.Item key="3"><Link to="/myChart">图表</Link></Menu.Item>
-                            <Menu.Item key="4"><Link to="/myCalendar">日历</Link></Menu.Item>
+                        <SubMenu key="sub1" title={<span><Icon type="mail" /><span>终端状态</span></span>}>
+                            <Menu.Item key="1"><Link to="/myStorage">存储状态</Link></Menu.Item>
+                            <Menu.Item key="2"><Link to="/myForm">网络状态</Link></Menu.Item>
+                            <Menu.Item key="3"><Link to="/myStorage">版本信息</Link></Menu.Item>
+                            <Menu.Item key="4"><Link to="/myChart">错误状态</Link></Menu.Item>
                         </SubMenu>
-                        <SubMenu key="sub2" title={<span><Icon type="appstore" /><span>导航二</span></span>}>
-                            <Menu.Item key="5"><Link to="/myCard">导航</Link></Menu.Item>
-                            <Menu.Item key="6"><Link to="/myAnimate">关注</Link></Menu.Item>
+                        <SubMenu key="sub2" title={<span><Icon type="mail" /><span>终端配置</span></span>}>
+                            <Menu.Item key="5"><Link to="/myTable">服务器配置</Link></Menu.Item>
+                            <Menu.Item key="6"><Link to="/myTable">高级设置</Link></Menu.Item>
+                            <Menu.Item key="6"><Link to="/myTable">系统设置</Link></Menu.Item>
+                        </SubMenu>
+
+                        <SubMenu key="sub3" title={<span><Icon type="appstore" /><span>系统工具</span></span>}>
+                            <Menu.Item key="7"><Link to="/myCard">诊断工具</Link></Menu.Item>
+                            <Menu.Item key="8"><Link to="/myCard">重启终端</Link></Menu.Item>
+                            <Menu.Item key="9"><Link to="/myAnimate">系统日志</Link></Menu.Item>
                         </SubMenu>
                     </Menu>
                 </div>
@@ -103,12 +112,13 @@ render((
     <Router history={hashHistory} >
         <Route path="/" component={Sider}>
             <IndexRoute path="myCard" component={myCard} />
-            <Route path="myTable" component={myTable} />
+            <Route path="myStorage" component={myStorage} />
             <Route path="myForm" component={myForm} />
             <Route path="myChart" component={myChart} />
             <Route path="myCalendar" component={myCalendar} />
             <Route path="myAnimate" component={myAnimate} />
             <Route path="myCard" component={myCard} />
+            <Route path="myTable" component={myTable} />
         </Route>
     </Router>
 ), document.getElementById('app'));
