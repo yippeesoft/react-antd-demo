@@ -35,3 +35,6 @@ http://localhost:8080/
   参考：https://github.com/gaearon/react-hot-boilerplate
   
   npm start
+
+##测试LESS
+  基本参照 http://www.cnblogs.com/samwu/p/5003809.html

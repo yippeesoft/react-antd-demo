@@ -8,7 +8,7 @@ module.exports = {
     entry: [
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
-        './src/main'
+        './less/index'
     ],
     output: {
         path: path.join(__dirname, 'dist'),
@@ -24,8 +24,13 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                include: path.join(__dirname, 'src'),
+                include: path.join(__dirname, 'less'),
                 loaders: ['react-hot', 'babel']
+            },
+            {
+                test: /\.less$/,
+                include: path.join(__dirname, 'less'),
+                loader: "style!css!less"
             },
             {
                 test: /\.css$/,
