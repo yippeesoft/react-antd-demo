@@ -6,9 +6,9 @@ var path = require('path');
 module.exports = {
     devtool: 'eval',
     entry: [
-        'webpack-dev-server/client?http://localhost:3000',
+        'webpack-dev-server/client?http://0.0.0.0:3000',
         'webpack/hot/only-dev-server',
-        './less/index'
+        './material/index'
     ],
     output: {
         path: path.join(__dirname, 'dist'),
@@ -24,7 +24,7 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                include: path.join(__dirname, 'less'),
+                include: path.join(__dirname, 'material'),
                 loaders: ['react-hot', 'babel']
             },
             {
