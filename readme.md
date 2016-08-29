@@ -5,6 +5,22 @@
 
 代码原作：http://www.cnblogs.com/luozhihao/p/5579786.html
 
+#ES6的坑
+
+     类名(组件名)一定要用大写开头，否则自定义的组件无法编译，识别不出来。
+     <<但是奇怪main.js都是小写的却可以>>
+     类中定义render函数要注意两点，见代码注释。
+
+ render() {//开头花括号一定要和小括号隔一个空格，否则识别不出来
+    return <ol>//标签前一半一定要和return一行
+      {
+         React.Children.map(this.props.children, function (child) {
+            return <li>{child}</li>;
+         })
+       }
+    </ol>;
+ }
+
 # 安装
 
 ## 下载安装：node.js
@@ -42,3 +58,5 @@ http://localhost:8080/
 ##测试Material-UI
 参考：http://blog.csdn.net/zccz14/article/details/51421324
 https://github.com/zccz14/xjtu-index
+http://www.cnblogs.com/Mrs-cc/p/4969755.html
+
