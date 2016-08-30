@@ -4,7 +4,7 @@ var path = require('path');
 
 
 module.exports = {
-    devtool: 'eval',
+    devtool: 'false',
     entry: [
         'webpack-dev-server/client?http://0.0.0.0:3000',
         'webpack/hot/only-dev-server',
@@ -56,12 +56,20 @@ module.exports = {
         plugins: ['transform-runtime', ["antd", {"style": "css"}]]
     },
     plugins: [
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery",
-            "window.jQuery": "jquery"
-        }),
-        new webpack.HotModuleReplacementPlugin()
+        // new webpack.ProvidePlugin({
+        //     $: "jquery",
+        //     jQuery: "jquery",
+        //     "window.jQuery": "jquery"
+        // }),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            output: {
+                comments: false,  // remove all comments
+            },
+            compress: {
+                warnings: false
+            }
+        })
         // new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js', Infinity) // 这是第三方库打包生成的文件
     ]
 }

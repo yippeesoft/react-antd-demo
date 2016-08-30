@@ -7,7 +7,8 @@ import {Tabs, Tab} from 'material-ui/Tabs'
 import AppBar from 'material-ui/AppBar';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import MyTest  from './test'
+import CardExampleExpandable  from './subs/CardExampleControlled'
+import Storage from './subs/storage'
 import Slider from 'material-ui/Slider'
 import { Router, Route, Link, hashHistory, IndexRoute, Redirect, IndexLink} from 'react-router'
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -19,6 +20,9 @@ const styles = {
         paddingTop: 16,
         marginBottom: 12,
         fontWeight: 400,
+    },
+    slide: {
+        padding: 10,
     },
 };
 function handleActive(tab) {
@@ -32,6 +36,7 @@ class TabsExampleControlled extends React.Component {
         this.state = {
             value: 'a',
         };
+
     }
 
     handleChange = (value) => {
@@ -41,30 +46,38 @@ class TabsExampleControlled extends React.Component {
     };
 
     render() {
+        var vv=new CardExampleExpandable();
         return (
             <MuiThemeProvider muiTheme={getMuiTheme() }>
                 <div>
-                    <AppBar title="Material-UI" showMenuIconButton={false}/>
+                    <AppBar title="系统设置" showMenuIconButton={false}/>
             <Tabs
                 value={this.state.value}
                 onChange={this.handleChange}
             >
-                <Tab label="Tab A" value="a" >
+                <Tab label="运行状态"   value="a">
                     <div>
                         <h2 style={styles.headline}>Controllable Tab A</h2>
+                        {vv.render() }
 
-                          <MyTest  />
+
+                    </div>
+                </Tab>
+                <Tab label="基本设置"   value="b">
+                    <div>
+                        <h2 style={styles.headline}>Controllable Tab B</h2>
+                        <Storage />
                         <p>
-                            AAAAAAAAACC
+                            BBBBBB
                         </p>
                     </div>
                 </Tab>
-                <Tab label="Tab B" value="b">
+                <Tab label="高级设置"   value="c">
                     <div>
                         <h2 style={styles.headline}>Controllable Tab B</h2>
-                        <Hello />
+                        <Storage />
                         <p>
-                            BBBBBB
+                            CCCC
                         </p>
                     </div>
                 </Tab>
